@@ -66,7 +66,7 @@ router.get('/passrecoveryemail', async (req, res, next)=>{
       mailSender(
         email,
         "Restablecer contraseña",
-        '<h1>Solicitud de restablecimiento de contraseña</h1><p>Hemos recibido una solicitud para restablecer su contraseña, si no ha sido usted ignore este correo.</p><h2>UUID: '+uuid+'</h2><p><a style="background-color: #4CAF50;border: none;color: white;padding: 15px 32px;text-align: center;text-decoration: none;display: inline-block;font-size: 16px;" href="http://localhost:3000/api/sec/passrecovery/:email/:uuid">RESTABLECER</></p>'
+        '<h1>Solicitud de restablecimiento de contraseña</h1><p>Hemos recibido una solicitud para restablecer su contraseña, si no ha sido usted ignore este correo.</p><h2>UUID: '+uuid+' (se muestra con fines ilustrativos)</h2><p><a style="background-color: #4CAF50;border: none;color: white;padding: 15px 32px;text-align: center;text-decoration: none;display: inline-block;font-size: 16px;" href="http://localhost:3000/api/sec/passrecovery/{'+email+'}/{'+uuid+'}">RESTABLECER</></p>'
       );
       let settoken = await SecModel.setResetToken(email,uuid);
       res.status(200).json({"msg":"Correo de restablecimiento enviado"});
